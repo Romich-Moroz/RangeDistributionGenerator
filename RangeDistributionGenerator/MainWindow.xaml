@@ -1,0 +1,101 @@
+﻿<Window x:Class="RangeDistributionGenerator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RangeDistributionGenerator" xmlns:oxy="http://oxyplot.org/wpf"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="500" Width="1000" d:DataContext="{d:DesignInstance local:Viewmodel }">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0">
+            <GroupBox Header="Входные данные">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <Label Content="Множитель (a):" Grid.Row="0" Grid.Column="0"/>
+                    <TextBox HorizontalAlignment="Right" Height="20" Width="140" Grid.Row="0" Grid.Column="1" Text="{Binding Multiplier}" />
+                    <Label Content="Начальное значение (R0):" Grid.Row="1" Grid.Column="0"/>
+                    <TextBox HorizontalAlignment="Right"  Height="20" Width="140" Grid.Row="1" Grid.Column="1" Text="{Binding StartingValue}"/>
+                    <Label Content="Модуль (m):" Grid.Row="2" Grid.Column="0"/>
+                    <TextBox HorizontalAlignment="Right"  Height="20" Width="140" Grid.Row="2" Grid.Column="1" Text="{Binding Module}"/>
+                    <Label Content="Алгоритм распределения:" Grid.Row="3" Grid.Column="0"/>
+                    <ComboBox HorizontalAlignment="Right"  Height="22" Width="140" Grid.Row="3" Grid.Column="1" SelectedIndex="{Binding SelectedAlgorithm}">
+                        <ComboBoxItem Content="Равномерного (a,b)"/>
+                        <ComboBoxItem Content="Гаусса (m,σ)"/>
+                        <ComboBoxItem Content="Экспоненциального (𝛌)"/>
+                        <ComboBoxItem Content="Гамма (η,𝛌)"/>
+                        <ComboBoxItem Content="Треугольного (a,b)"/>
+                        <ComboBoxItem Content="Симпсона (a,b)"/>
+                    </ComboBox>
+                    <GroupBox Header="Параметры распределений" Grid.Row="4" Grid.ColumnSpan="2">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+                            <Label Content="Минимальное значение (a):" Grid.Row="0" Grid.Column="0"/>
+                            <TextBox HorizontalAlignment="Right"  Height="20" Width="140" Grid.Row="0" Grid.Column="1" Text="{Binding MinValue}"/>
+                            <Label Content="Максимальное значение (b):" Grid.Row="1" Grid.Column="0"/>
+                            <TextBox HorizontalAlignment="Right"  Height="20" Width="140" Grid.Row="1" Grid.Column="1" Text="{Binding MaxValue}"/>
+                            <Label Content="Математическое ожидание (m):" Grid.Row="2" Grid.Column="0"/>
+                            <TextBox HorizontalAlignment="Right"  Height="20" Width="140" Grid.Row="2" Grid.Column="1" Text="{Binding GaussExpectation}"/>
+                            <Label Content="Ср. квадратичное отклонение (σ):" Grid.Row="3" Grid.Column="0"/>
+                            <TextBox HorizontalAlignment="Right"  Height="20" Width="140" Grid.Row="3" Grid.Column="1" Text="{Binding GaussDeviation}"/>
+                            <Label Content="Параметр распределения (η):" Grid.Row="4" Grid.Column="0"/>
+                            <TextBox HorizontalAlignment="Right"  Height="20" Width="140" Grid.Row="4" Grid.Column="1" Text="{Binding Eta}"/>
+                            <Label Content="Параметр распределения (𝛌):" Grid.Row="5" Grid.Column="0"/>
+                            <TextBox HorizontalAlignment="Right"  Height="20" Width="140" Grid.Row="5" Grid.Column="1" Text="{Binding Lambda}"/>
+                        </Grid>
+                    </GroupBox>
+                    <Button Margin="0 5 0 5" Content="Рассчитать" Grid.Row="8" Grid.ColumnSpan="2" Command="{Binding CalculateCommand}"/>
+                </Grid>
+            </GroupBox>
+            <GroupBox Header="Характеристики">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <Label Content="Мат. ожидание (Mx):" Grid.Row="0" Grid.Column="0"/>
+                    <Label Width="140" Grid.Row="0" Grid.Column="1" Content="{Binding MathExpectation}"/>
+                    <Label Content="Дисперсия (Dx):" Grid.Row="1" Grid.Column="0"/>
+                    <Label Width="140" Grid.Row="1" Grid.Column="1" Content="{Binding Dispersion}"/>
+                    <Label Content="Среднее квадратичное отклонение:" Grid.Row="2" Grid.Column="0"/>
+                    <Label Width="140" Grid.Row="2" Grid.Column="1" Content="{Binding MeanSquareDeviation}"/>
+                </Grid>
+            </GroupBox>
+        </StackPanel>
+        <oxy:PlotView Grid.Column="1" Model="{Binding PlotModel }"/>
+
+    </Grid>
+</Window>

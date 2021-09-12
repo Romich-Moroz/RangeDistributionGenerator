@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RangeDistributionGenerator", "RangeDistributionGenerator\RangeDistributionGenerator.csproj", "{99A943DC-921D-4255-AA28-1972AB8C941D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{99A943DC-921D-4255-AA28-1972AB8C941D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99A943DC-921D-4255-AA28-1972AB8C941D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99A943DC-921D-4255-AA28-1972AB8C941D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99A943DC-921D-4255-AA28-1972AB8C941D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {51556FFE-DADB-48FC-9E12-A23B51A7A134}
+	EndGlobalSection
+EndGlobal
