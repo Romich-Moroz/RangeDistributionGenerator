@@ -95,10 +95,10 @@ namespace RangeDistributionGenerator
                 }
                 for (int i = 0; i < countInIntervals.Length; i++)
                 {
-                    datapoints.Add(new DataPoint(i * step + step/2, (double)countInIntervals[i] / ValueCount));
+                    datapoints.Add(new DataPoint(i * step, (double)countInIntervals[i] / ValueCount));
                 }
                 var plot = new PlotModel { Title = "Гистограмма" };
-                plot.Axes.Add(new CategoryAxis { Position = AxisPosition.Bottom, Minimum = 0, Maximum = 20 });
+                plot.Axes.Add(new CategoryAxis { Position = AxisPosition.Bottom, Minimum = -1, Maximum = 20 });
                 plot.Axes.Add(new LinearAxis { Position = AxisPosition.Left, Minimum = 0, Maximum = 0.1 });
 
                 plot.Series.Add(new ColumnSeries { ItemsSource = datapoints, ValueField="Y"});
